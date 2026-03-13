@@ -1,0 +1,30 @@
+{
+  "name": "@security-demo/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@orpc/client": "catalog:",
+    "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/zod": "catalog:",
+    "@prisma/client": "catalog:",
+    "@security-demo/auth": "workspace:*",
+    "@security-demo/db": "workspace:*",
+    "@security-demo/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@security-demo/config": "workspace:*",
+    "elysia": "catalog:",
+    "typescript": "^5"
+  }
+}

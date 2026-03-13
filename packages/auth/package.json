@@ -1,0 +1,24 @@
+{
+  "name": "@security-demo/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@security-demo/db": "workspace:*",
+    "@security-demo/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@security-demo/config": "workspace:*",
+    "typescript": "^5"
+  }
+}
