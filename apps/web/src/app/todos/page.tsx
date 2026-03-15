@@ -12,12 +12,12 @@ import { Checkbox } from "@security-demo/ui/components/checkbox";
 import { Input } from "@security-demo/ui/components/input";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Loader2, Trash2 } from "lucide-react";
-import { useState } from "react";
+import React from "react";
 
 import { orpc } from "@/utils/orpc";
 
 export default function TodosPage() {
-  const [newTodoText, setNewTodoText] = useState("");
+  const [newTodoText, setNewTodoText] = React.useState("");
 
   const todos = useQuery(orpc.todo.getAll.queryOptions());
   const createMutation = useMutation(
