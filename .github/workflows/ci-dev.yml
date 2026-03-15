@@ -6,9 +6,6 @@ on:
 jobs:
   secret-scan:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read   # ← this was missing
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
@@ -18,8 +15,6 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
