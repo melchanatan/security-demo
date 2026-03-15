@@ -15,3 +15,5 @@
 ## Usage
 - **Pre-commit**: Automatically scans staged changes during `git commit`.
 - **Manual Scan**: Execute `bun run gitleaks` to check the entire repository history.
+
+[x] setup semgrep
