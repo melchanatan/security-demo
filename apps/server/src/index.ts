@@ -72,6 +72,14 @@ const app = new Elysia()
       parse: "none",
     }
   )
+  .get("/redirect", ({ query, set }) => {
+    // VULNERABILITY: Open Redirect
+    const target = query.url as string;
+    if (target) {
+      set.redirect = target;
+    }
+    return "Redirecting...";
+  })
   .get("/", () => "OK")
   .listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
