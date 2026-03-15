@@ -1,0 +1,425 @@
+apps/web/next.config.ts:1:8 lint/correctness/noUnresolvedImports ━━━━━━━━━━
+
+  × The import specifier @security-demo/env/web cannot be resolved: module not found
+  
+  > 1 │ import "@security-demo/env/web";
+      │        ^^^^^^^^^^^^^^^^^^^^^^^^
+    2 │ import type { NextConfig } from "next";
+    3 │ 
+  
+  i Make sure the specifier is correct and your project is set up correctly.
+  
+
+apps/web/src/app/dashboard/dashboard.tsx:4:33 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    2 │ import { useQuery } from "@tanstack/react-query";
+    3 │ 
+  > 4 │ import type { authClient } from "@/lib/auth-client";
+      │                                 ^^^^^^^^^^^^^^^^^^^
+    5 │ import { orpc } from "@/utils/orpc";
+    6 │ 
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .ts.
+  
+     2  2 │   import { useQuery } from "@tanstack/react-query";
+     3  3 │   
+     4    │ - import·type·{·authClient·}·from·"@/lib/auth-client";
+        4 │ + import·type·{·authClient·}·from·"@/lib/auth-client.ts";
+     5  5 │   import { orpc } from "@/utils/orpc";
+     6  6 │   
+  
+
+apps/web/src/app/dashboard/dashboard.tsx:5:22 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    4 │ import type { authClient } from "@/lib/auth-client";
+  > 5 │ import { orpc } from "@/utils/orpc";
+      │                      ^^^^^^^^^^^^^^
+    6 │ 
+    7 │ export default function Dashboard({
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .ts.
+  
+     3  3 │   
+     4  4 │   import type { authClient } from "@/lib/auth-client";
+     5    │ - import·{·orpc·}·from·"@/utils/orpc";
+        5 │ + import·{·orpc·}·from·"@/utils/orpc.ts";
+     6  6 │   
+     7  7 │   export default function Dashboard({
+  
+
+apps/web/src/app/dashboard/dashboard.tsx:8:3 lint/correctness/noUnusedFunctionParameters ━━━━━━━━━━
+
+  × This parameter is unused.
+  
+     7 │ export default function Dashboard({
+   > 8 │   session,
+       │   ^^^^^^^
+     9 │ }: {
+    10 │   session: typeof authClient.$Infer.Session;
+  
+  i Unused parameters might be the result of an incomplete refactoring.
+  
+
+apps/web/src/app/dashboard/dashboard.tsx:15:5 lint/complexity/noUselessFragments  FIXABLE  ━━━━━━━━━━
+
+  × This fragment is unnecessary.
+  
+    14 │   return (
+  > 15 │     <>
+       │     ^^
+  > 16 │       <p>API: {privateData.data?.message}</p>
+  > 17 │     </>
+       │     ^^^
+    18 │   );
+    19 │ }
+  
+  i A fragment is redundant if it contains only one child, or if it is the child of a html element, and is not a keyed fragment.
+  
+  i Unsafe fix: Remove the Fragment
+  
+    13 13 │   
+    14 14 │     return (
+    15    │ - ····<>
+    16    │ - ······<p>API:·{privateData.data?.message}</p>
+    17    │ - ····</>
+       15 │ + ····<p>API:·{privateData.data?.message}</p>
+    18 16 │     );
+    19 17 │   }
+  
+
+apps/web/src/app/login/page.tsx:3:10 lint/correctness/noUnresolvedImports ━━━━━━━━━━
+
+  × The module react has no export named useState.
+  
+    1 │ "use client";
+    2 │ 
+  > 3 │ import { useState } from "react";
+      │          ^^^^^^^^
+    4 │ 
+    5 │ import SignInForm from "@/components/sign-in-form";
+  
+  i Make sure that the module is correct and that you're importing the right symbol.
+  
+
+apps/web/src/app/login/page.tsx:5:24 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    3 │ import { useState } from "react";
+    4 │ 
+  > 5 │ import SignInForm from "@/components/sign-in-form";
+      │                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    6 │ import SignUpForm from "@/components/sign-up-form";
+    7 │ 
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+     3  3 │   import { useState } from "react";
+     4  4 │   
+     5    │ - import·SignInForm·from·"@/components/sign-in-form";
+        5 │ + import·SignInForm·from·"@/components/sign-in-form.tsx";
+     6  6 │   import SignUpForm from "@/components/sign-up-form";
+     7  7 │   
+  
+
+apps/web/src/app/login/page.tsx:6:24 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    5 │ import SignInForm from "@/components/sign-in-form";
+  > 6 │ import SignUpForm from "@/components/sign-up-form";
+      │                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    7 │ 
+    8 │ export default function LoginPage() {
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+     4  4 │   
+     5  5 │   import SignInForm from "@/components/sign-in-form";
+     6    │ - import·SignUpForm·from·"@/components/sign-up-form";
+        6 │ + import·SignUpForm·from·"@/components/sign-up-form.tsx";
+     7  7 │   
+     8  8 │   export default function LoginPage() {
+  
+
+apps/web/src/app/page.tsx:4:22 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    2 │ import { useQuery } from "@tanstack/react-query";
+    3 │ 
+  > 4 │ import { orpc } from "@/utils/orpc";
+      │                      ^^^^^^^^^^^^^^
+    5 │ 
+    6 │ const TITLE_TEXT = `
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .ts.
+  
+     2  2 │   import { useQuery } from "@tanstack/react-query";
+     3  3 │   
+     4    │ - import·{·orpc·}·from·"@/utils/orpc";
+        4 │ + import·{·orpc·}·from·"@/utils/orpc.ts";
+     5  5 │   
+     6  6 │   const TITLE_TEXT = `
+  
+
+apps/web/src/app/page.tsx:38:19 lint/style/noNestedTernary ━━━━━━━━━━
+
+  × Do not nest ternary expressions.
+  
+    36 │               {healthCheck.isLoading
+    37 │                 ? "Checking..."
+  > 38 │                 : healthCheck.data
+       │                   ^^^^^^^^^^^^^^^^
+  > 39 │                   ? "Connected"
+  > 40 │                   : "Disconnected"}
+       │                   ^^^^^^^^^^^^^^^^
+    41 │             </span>
+    42 │           </div>
+  
+  i Nesting ternary expressions can make code more difficult to understand.
+  
+  i Convert nested ternary expression into if-else statements or separate the conditions to make the logic easier to understand.
+  
+
+apps/web/src/app/todos/page.tsx:3:24 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    1 │ "use client";
+    2 │ 
+  > 3 │ import { Button } from "@security-demo/ui/components/button";
+      │                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    4 │ import {
+    5 │   Card,
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+      1   1 │   "use client";
+      2   2 │   
+      3     │ - import·{·Button·}·from·"@security-demo/ui/components/button";
+          3 │ + import·{·Button·}·from·"@security-demo/ui/components/button.tsx";
+      4   4 │   import {
+      5   5 │     Card,
+  
+
+apps/web/src/app/todos/page.tsx:10:8 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+     8 │   CardHeader,
+     9 │   CardTitle,
+  > 10 │ } from "@security-demo/ui/components/card";
+       │        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    11 │ import { Checkbox } from "@security-demo/ui/components/checkbox";
+    12 │ import { Input } from "@security-demo/ui/components/input";
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+      8   8 │     CardHeader,
+      9   9 │     CardTitle,
+     10     │ - }·from·"@security-demo/ui/components/card";
+         10 │ + }·from·"@security-demo/ui/components/card.tsx";
+     11  11 │   import { Checkbox } from "@security-demo/ui/components/checkbox";
+     12  12 │   import { Input } from "@security-demo/ui/components/input";
+  
+
+apps/web/src/app/todos/page.tsx:11:26 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+     9 │   CardTitle,
+    10 │ } from "@security-demo/ui/components/card";
+  > 11 │ import { Checkbox } from "@security-demo/ui/components/checkbox";
+       │                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    12 │ import { Input } from "@security-demo/ui/components/input";
+    13 │ import { useMutation, useQuery } from "@tanstack/react-query";
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+      9   9 │     CardTitle,
+     10  10 │   } from "@security-demo/ui/components/card";
+     11     │ - import·{·Checkbox·}·from·"@security-demo/ui/components/checkbox";
+         11 │ + import·{·Checkbox·}·from·"@security-demo/ui/components/checkbox.tsx";
+     12  12 │   import { Input } from "@security-demo/ui/components/input";
+     13  13 │   import { useMutation, useQuery } from "@tanstack/react-query";
+  
+
+apps/web/src/app/todos/page.tsx:12:23 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    10 │ } from "@security-demo/ui/components/card";
+    11 │ import { Checkbox } from "@security-demo/ui/components/checkbox";
+  > 12 │ import { Input } from "@security-demo/ui/components/input";
+       │                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    13 │ import { useMutation, useQuery } from "@tanstack/react-query";
+    14 │ import { Loader2, Trash2 } from "lucide-react";
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+     10  10 │   } from "@security-demo/ui/components/card";
+     11  11 │   import { Checkbox } from "@security-demo/ui/components/checkbox";
+     12     │ - import·{·Input·}·from·"@security-demo/ui/components/input";
+         12 │ + import·{·Input·}·from·"@security-demo/ui/components/input.tsx";
+     13  13 │   import { useMutation, useQuery } from "@tanstack/react-query";
+     14  14 │   import { Loader2, Trash2 } from "lucide-react";
+  
+
+apps/web/src/app/todos/page.tsx:15:10 lint/correctness/noUnresolvedImports ━━━━━━━━━━
+
+  × The module react has no export named useState.
+  
+    13 │ import { useMutation, useQuery } from "@tanstack/react-query";
+    14 │ import { Loader2, Trash2 } from "lucide-react";
+  > 15 │ import { useState } from "react";
+       │          ^^^^^^^^
+    16 │ 
+    17 │ import { orpc } from "@/utils/orpc";
+  
+  i Make sure that the module is correct and that you're importing the right symbol.
+  
+
+apps/web/src/app/todos/page.tsx:17:22 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    15 │ import { useState } from "react";
+    16 │ 
+  > 17 │ import { orpc } from "@/utils/orpc";
+       │                      ^^^^^^^^^^^^^^
+    18 │ 
+    19 │ export default function TodosPage() {
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .ts.
+  
+     15  15 │   import { useState } from "react";
+     16  16 │   
+     17     │ - import·{·orpc·}·from·"@/utils/orpc";
+         17 │ + import·{·orpc·}·from·"@/utils/orpc.ts";
+     18  18 │   
+     19  19 │   export default function TodosPage() {
+  
+
+apps/web/src/app/todos/page.tsx:95:15 lint/style/noNestedTernary ━━━━━━━━━━
+
+  × Do not nest ternary expressions.
+  
+     93 │               <Loader2 className="h-6 w-6 animate-spin" />
+     94 │             </div>
+   > 95 │           ) : todos.data?.length === 0 ? (
+        │               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   > 96 │             <p className="py-4 text-center">No todos yet. Add one above!</p>
+         ...
+  > 129 │             </ul>
+  > 130 │           )}
+        │           ^
+    131 │         </CardContent>
+    132 │       </Card>
+  
+  i Nesting ternary expressions can make code more difficult to understand.
+  
+  i Convert nested ternary expression into if-else statements or separate the conditions to make the logic easier to understand.
+  
+
+apps/web/src/components/header.tsx:4:28 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    2 │ import Link from "next/link";
+    3 │ 
+  > 4 │ import { ModeToggle } from "./mode-toggle";
+      │                            ^^^^^^^^^^^^^^^
+    5 │ import UserMenu from "./user-menu";
+    6 │ 
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+     2  2 │   import Link from "next/link";
+     3  3 │   
+     4    │ - import·{·ModeToggle·}·from·"./mode-toggle";
+        4 │ + import·{·ModeToggle·}·from·"./mode-toggle.tsx";
+     5  5 │   import UserMenu from "./user-menu";
+     6  6 │   
+  
+
+apps/web/src/components/header.tsx:5:22 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    4 │ import { ModeToggle } from "./mode-toggle";
+  > 5 │ import UserMenu from "./user-menu";
+      │                      ^^^^^^^^^^^^^
+    6 │ 
+    7 │ export default function Header() {
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+     3  3 │   
+     4  4 │   import { ModeToggle } from "./mode-toggle";
+     5    │ - import·UserMenu·from·"./user-menu";
+        5 │ + import·UserMenu·from·"./user-menu.tsx";
+     6  6 │   
+     7  7 │   export default function Header() {
+  
+
+apps/web/src/components/mode-toggle.tsx:3:24 lint/correctness/useImportExtensions  FIXABLE  ━━━━━━━━━━
+
+  × Add a file extension for relative imports.
+  
+    1 │ "use client";
+    2 │ 
+  > 3 │ import { Button } from "@security-demo/ui/components/button";
+      │                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    4 │ import {
+    5 │   DropdownMenu,
+  
+  i Explicit import improves compatibility with browsers and makes file resolution in tooling faster.
+  
+  i Safe fix: Add import extension .tsx.
+  
+     1  1 │   "use client";
+     2  2 │   
+     3    │ - import·{·Button·}·from·"@security-demo/ui/components/button";
+        3 │ + import·{·Button·}·from·"@security-demo/ui/components/button.tsx";
+     4  4 │   import {
+     5  5 │     DropdownMenu,
+  
+
+The number of diagnostics exceeds the limit allowed. Use --max-diagnostics to increase it.
+Diagnostics not shown: 33.
+Checked 36 files in 980ms. No fixes applied.
+Found 53 errors.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+
