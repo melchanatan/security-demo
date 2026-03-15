@@ -38,13 +38,4 @@ export const todoRouter = {
         where: { id: input.id },
       });
     }),
-
-  getByIdUnsafe: publicProcedure
-    .input(z.object({ id: z.string() }))
-    .handler(async ({ input }) => {
-      // VULNERABILITY: SQL Injection via $queryRawUnsafe with string interpolation
-      return await prisma.$queryRawUnsafe(
-        `SELECT * FROM Todo WHERE id = ${input.id}`
-      );
-    }),
 };
