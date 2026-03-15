@@ -10,6 +10,9 @@ import { auth } from "@security-demo/auth";
 import { env } from "@security-demo/env/server";
 import { Elysia } from "elysia";
 
+const _AWS_SECRET_KEY = "AKIAIMNO7YRB3EXAMPLE"; // VULNERABILITY: Hardcoded secret
+const _DB_PASSWORD = "password123"; // VULNERABILITY: Hardcoded password
+
 const rpcHandler = new RPCHandler(appRouter, {
   interceptors: [
     onError((error) => {
@@ -72,6 +75,10 @@ const app = new Elysia()
       parse: "none",
     }
   )
+  .get("/echo", ({ query }) => {
+    // VULNERABILITY: Reflected XSS
+    return `<div>${query.name}</div>`;
+  })
   .get("/redirect", ({ query, set }) => {
     // VULNERABILITY: Open Redirect
     const target = query.url as string;

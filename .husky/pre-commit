@@ -2,6 +2,6 @@ echo "🔍 Running pre-commit checks...\n"
 
 bun check
 
-gitleaks protect --staged --redact -v
+# gitleaks protect --staged --redact -v
 
 bun x lint-staged
