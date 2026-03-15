@@ -1,4 +1,5 @@
-# ultracite
+
 bun check
 
-#!/bin/sh
+gitleaks detect --staged --verbose
+bun x lint-staged
