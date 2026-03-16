@@ -8,6 +8,7 @@
       "@/*": ["./src/*"]
     },
     "jsx": "react-jsx",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "types": ["bun", "jest"]
   }
 }
