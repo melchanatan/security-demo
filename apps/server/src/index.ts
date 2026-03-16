@@ -33,7 +33,7 @@ const apiHandler = new OpenAPIHandler(appRouter, {
   ],
 });
 
-const app = new Elysia()
+export const app = new Elysia()
   .use(
     cors({
       origin: env.CORS_ORIGIN,
@@ -87,9 +87,12 @@ const app = new Elysia()
     }
     return "Redirecting...";
   })
-  .get("/", () => "OK")
-  .listen(3000, () => {
+  .get("/", () => "OK");
+
+if (process.env.NODE_ENV !== "test") {
+  app.listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
   });
+}
 
 export type App = typeof app;
