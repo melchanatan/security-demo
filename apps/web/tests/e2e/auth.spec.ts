@@ -16,7 +16,7 @@ test.describe("Authentication", () => {
     await authPage.goto();
   });
 
-  test("should sign up successfully", async ({ page }) => {
+  test("should sign up successfully @smoke", async ({ page }) => {
     await authPage.switchToSignUp();
     await authPage.fillSignUpForm(name, randomEmail, password);
     await authPage.submitSignUp();
@@ -24,7 +24,7 @@ test.describe("Authentication", () => {
     await expect(page).toHaveURL(DASHBOARD_URL_REGEX);
   });
 
-  test("should sign in successfully", async ({ page }) => {
+  test("should sign in successfully @smoke", async ({ page }) => {
     const signInEmail = `signin-${Date.now()}@example.com`;
     const userMenu = new UserMenuPage(page, name);
 
