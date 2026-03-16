@@ -8,7 +8,8 @@
     "compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
     "dev": "bun run --hot src/index.ts",
     "start": "bun run dist/index.mjs",
-    "test": "bun test"
+    "test": "bun test",
+    "test:load": "k6 run tests/load/script.js"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.1",
@@ -28,6 +29,7 @@
     "@security-demo/config": "workspace:*",
     "@types/bun": "catalog:",
     "@types/jest": "^30.0.0",
+    "@types/k6": "^1.6.0",
     "jest": "^30.3.0",
     "jest-mock-extended": "^4.0.0",
     "ts-jest": "^29.4.6",
