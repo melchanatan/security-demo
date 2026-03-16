@@ -41,6 +41,7 @@
     "db:local": "turbo -F @security-demo/db db:local",
     "check": "ultracite check",
     "fix": "ultracite fix",
+    "test:e2e": "turbo test:e2e",
     "prepare": "husky",
     "gitleaks": "gitleaks detect --verbose"
   },
