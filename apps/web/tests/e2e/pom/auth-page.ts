@@ -1,7 +1,7 @@
 import type { Locator, Page } from "@playwright/test";
 
-const SIGN_UP_REGEX = /sign up/i;
-const SIGN_IN_REGEX = /sign in/i;
+const SIGN_UP_LINK_REGEX = /need an account/i;
+const SIGN_IN_LINK_REGEX = /already have an account/i;
 
 export class AuthPage {
   readonly page: Page;
@@ -10,16 +10,26 @@ export class AuthPage {
   readonly emailInput: Locator;
   readonly passwordInput: Locator;
   readonly nameInput: Locator;
-  readonly submitButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.signUpLink = page.getByRole("button", { name: SIGN_UP_REGEX });
-    this.signInLink = page.getByRole("button", { name: SIGN_IN_REGEX });
-    this.emailInput = page.locator('input[name="email"]');
-    this.passwordInput = page.locator('input[name="password"]');
-    this.nameInput = page.locator('input[name="name"]');
-    this.submitButton = page.locator('button[type="submit"]');
+    this.signUpLink = page.getByRole("button", { name: SIGN_UP_LINK_REGEX });
+    this.signInLink = page.getByRole("button", { name: SIGN_IN_LINK_REGEX });
+    this.emailInput = page.getByLabel("Email");
+    this.passwordInput = page.getByLabel("Password");
+    this.nameInput = page.getByLabel("Name");
+  }
+
+  get signUpSubmitButton() {
+    return this.page
+      .locator("form")
+      .getByRole("button", { name: "Sign Up", exact: true });
+  }
+
+  get signInSubmitButton() {
+    return this.page
+      .locator("form")
+      .getByRole("button", { name: "Sign In", exact: true });
   }
 
   async goto() {
@@ -27,11 +37,15 @@ export class AuthPage {
   }
 
   async switchToSignUp() {
-    await this.signUpLink.click();
+    if (await this.signUpLink.isVisible()) {
+      await this.signUpLink.click();
+    }
   }
 
   async switchToSignIn() {
-    await this.signInLink.click();
+    if (await this.signInLink.isVisible()) {
+      await this.signInLink.click();
+    }
   }
 
   async fillSignUpForm(name: string, email: string, pass: string) {
@@ -45,7 +59,11 @@ export class AuthPage {
     await this.passwordInput.fill(pass);
   }
 
-  async submit() {
-    await this.submitButton.click();
+  async submitSignUp() {
+    await this.signUpSubmitButton.click();
+  }
+
+  async submitSignIn() {
+    await this.signInSubmitButton.click();
   }
 }

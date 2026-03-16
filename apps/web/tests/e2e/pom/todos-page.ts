@@ -15,8 +15,8 @@ export class TodosPage {
     this.page = page;
     this.todoInput = page.getByPlaceholder(TODO_INPUT_REGEX);
     this.addButton = page.getByRole("button", { name: ADD_BUTTON_REGEX });
-    this.todoList = page.locator("ul");
-    this.todoItems = page.locator("li");
+    this.todoList = page.getByRole("list");
+    this.todoItems = page.getByRole("listitem");
   }
 
   async goto() {

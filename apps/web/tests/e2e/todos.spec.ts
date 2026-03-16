@@ -17,7 +17,7 @@ test.describe("Todos", () => {
     await authPage.goto();
     await authPage.switchToSignUp();
     await authPage.fillSignUpForm("Todo User", email, "password123");
-    await authPage.submit();
+    await authPage.submitSignUp();
     await expect(page).toHaveURL(DASHBOARD_URL_REGEX);
 
     await todosPage.goto();

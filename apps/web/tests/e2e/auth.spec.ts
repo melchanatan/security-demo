@@ -19,10 +19,9 @@ test.describe("Authentication", () => {
   test("should sign up successfully", async ({ page }) => {
     await authPage.switchToSignUp();
     await authPage.fillSignUpForm(name, randomEmail, password);
-    await authPage.submit();
+    await authPage.submitSignUp();
 
     await expect(page).toHaveURL(DASHBOARD_URL_REGEX);
-    // Toast might be elusive, so we check it with a slightly longer timeout or just rely on navigation
   });
 
   test("should sign in successfully", async ({ page }) => {
@@ -31,7 +30,7 @@ test.describe("Authentication", () => {
 
     await authPage.switchToSignUp();
     await authPage.fillSignUpForm(name, signInEmail, password);
-    await authPage.submit();
+    await authPage.submitSignUp();
     await expect(page).toHaveURL(DASHBOARD_URL_REGEX);
 
     await userMenu.signOut();
@@ -40,7 +39,7 @@ test.describe("Authentication", () => {
     await authPage.goto();
     await authPage.switchToSignIn();
     await authPage.fillSignInForm(signInEmail, password);
-    await authPage.submit();
+    await authPage.submitSignIn();
 
     await expect(page).toHaveURL(DASHBOARD_URL_REGEX);
   });
